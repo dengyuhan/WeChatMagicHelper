@@ -1,6 +1,7 @@
 package com.dyhdyh.helper.wechat.library;
 
-import com.dyhdyh.helper.wechat.library.listener.WeChatMessageListener;
+import com.dyhdyh.helper.wechat.library.interfaces.WeChatMessageListener;
+import com.dyhdyh.helper.wechat.library.interfaces.WeChatMessageTransform;
 
 /**
  * @author dengyuhan
@@ -9,6 +10,7 @@ import com.dyhdyh.helper.wechat.library.listener.WeChatMessageListener;
 public class WeChatHelper {
     private static WeChatHelper mInstance;
     private WeChatMessageListener mMessageListener;
+    private WeChatMessageTransform mMessageTransform;
 
     private WeChatHelper() {
 
@@ -23,11 +25,22 @@ public class WeChatHelper {
         return mInstance;
     }
 
-    public void setMessageListener(WeChatMessageListener messageListener) {
+    public WeChatHelper registerMessageListener(WeChatMessageListener messageListener) {
         this.mMessageListener = messageListener;
+        return this;
+    }
+
+
+    public WeChatHelper setMessageTransform(WeChatMessageTransform messageTransform) {
+        this.mMessageTransform = messageTransform;
+        return this;
     }
 
     public WeChatMessageListener getMessageListener() {
         return mMessageListener;
+    }
+
+    public WeChatMessageTransform getMessageTransform() {
+        return mMessageTransform;
     }
 }

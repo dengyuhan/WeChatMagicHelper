@@ -5,15 +5,10 @@ import android.app.Notification;
 import android.os.Bundle;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
-import android.text.TextUtils;
 import android.util.Log;
 
-import com.dyhdyh.helper.wechat.library.WeChatHelper;
-import com.dyhdyh.helper.wechat.library.listener.WeChatMessageListener;
-import com.dyhdyh.helper.wechat.library.model.WeChatContent;
-import com.dyhdyh.helper.wechat.library.model.WeChatMessage;
+import com.dyhdyh.helper.wechat.library.helper.WeChatMessageControlHelper;
 import com.dyhdyh.helper.wechat.library.util.Constants;
-import com.dyhdyh.helper.wechat.library.util.WeChatMessageProcessor;
 
 /**
  * @author dengyuhan
@@ -42,18 +37,7 @@ public class WeChatNotificationService extends NotificationListenerService {
 
             Log.i("onNotificationPosted", title + "---->" + text);
 
-            WeChatMessageListener listener = WeChatHelper.getInstance().getMessageListener();
-            if (listener != null) {
-                WeChatMessage message = new WeChatMessage();
-                message.setUuid();
-                message.setNickname(title);
-                message.setTimestamp(System.currentTimeMillis());
-                if (!TextUtils.isEmpty(text)){
-                    WeChatContent content = WeChatMessageProcessor.process(message.getNickname(), text);
-                    message.setContent(content);
-                }
-                listener.onReceiveMessage(message);
-            }
+            WeChatMessageControlHelper.notifyListener(title, text);
         }
     }
 

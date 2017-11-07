@@ -40,6 +40,7 @@ public class NotificationServiceUtil {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
             try {
                 Intent intent = new Intent();
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

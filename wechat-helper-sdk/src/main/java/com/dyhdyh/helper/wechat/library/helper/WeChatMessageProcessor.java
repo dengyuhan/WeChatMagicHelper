@@ -1,4 +1,6 @@
-package com.dyhdyh.helper.wechat.library.util;
+package com.dyhdyh.helper.wechat.library.helper;
+
+import android.text.TextUtils;
 
 import com.dyhdyh.helper.wechat.library.model.WeChatContent;
 import com.dyhdyh.helper.wechat.library.model.WeChatCustomEmoji;
@@ -8,6 +10,8 @@ import com.dyhdyh.helper.wechat.library.model.WeChatText;
 import com.dyhdyh.helper.wechat.library.model.WeChatUndefined;
 import com.dyhdyh.helper.wechat.library.model.WeChatVideo;
 import com.dyhdyh.helper.wechat.library.model.fixed.WeChatMessageType;
+import com.dyhdyh.helper.wechat.library.util.FileUtil;
+import com.dyhdyh.helper.wechat.library.util.WeChatFileUtil;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -21,7 +25,7 @@ import java.io.FilenameFilter;
 public class WeChatMessageProcessor {
 
     public static WeChatContent process(String nickName, String text) {
-        String rawText = text.replaceFirst(String.format("%s: ", nickName), "");
+        String rawText = TextUtils.isEmpty(text) ? "" : text.replaceFirst(String.format("%s: ", nickName), "");
         if (rawText.startsWith("[") && rawText.contains("条]")) {
             rawText = rawText.substring(rawText.indexOf("]") + 1, rawText.length());
         }

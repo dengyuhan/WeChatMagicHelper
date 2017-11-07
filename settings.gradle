@@ -1,1 +1,1 @@
-include ':app', ':wechat-helper'
+include ':app', ':wechat-helper-sdk'
