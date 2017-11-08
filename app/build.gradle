@@ -29,4 +29,5 @@ dependencies {
     implementation 'com.tbruyelle.rxpermissions:rxpermissions:0.9.4'
     implementation project(':wechat-helper-sdk')
     implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'io.reactivex:rxandroid:1.2.1'
 }

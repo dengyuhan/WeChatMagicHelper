@@ -7,7 +7,7 @@ import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
 
-import com.dyhdyh.helper.wechat.library.helper.WeChatMessageControlHelper;
+import com.dyhdyh.helper.wechat.library.helper.WeChatMessageController;
 import com.dyhdyh.helper.wechat.library.util.Constants;
 
 /**
@@ -37,7 +37,7 @@ public class WeChatNotificationService extends NotificationListenerService {
 
             Log.i("onNotificationPosted", title + "---->" + text);
 
-            WeChatMessageControlHelper.notifyListener(title, text);
+            WeChatMessageController.notifyListener(title, text);
         }
     }
 

@@ -9,6 +9,7 @@ import com.dyhdyh.helper.wechat.library.model.WeChatShare;
 import com.dyhdyh.helper.wechat.library.model.WeChatText;
 import com.dyhdyh.helper.wechat.library.model.WeChatUndefined;
 import com.dyhdyh.helper.wechat.library.model.WeChatVideo;
+import com.dyhdyh.helper.wechat.library.model.WeChatWithdraw;
 import com.dyhdyh.helper.wechat.library.model.fixed.WeChatMessageType;
 import com.dyhdyh.helper.wechat.library.util.FileUtil;
 import com.dyhdyh.helper.wechat.library.util.WeChatFileUtil;
@@ -39,6 +40,8 @@ public class WeChatMessageProcessor {
                 return processVideoMessage();
             } else if (rawText.startsWith(WeChatMessageType.SHARE.getTag())) {
                 return new WeChatShare();
+            } else if (rawText.startsWith(WeChatMessageType.WITHDRAW.getTag())) {
+                return new WeChatWithdraw();
             } else {
                 WeChatUndefined undefined = new WeChatUndefined();
                 undefined.setText(rawText);
