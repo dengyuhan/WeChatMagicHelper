@@ -1,27 +1,43 @@
 package com.dyhdyh.helper.wechat.library.helper;
 
 import com.dyhdyh.helper.wechat.library.WeChatHelper;
+import com.dyhdyh.helper.wechat.library.interfaces.WeChatDialogueWindowLifecycle;
 import com.dyhdyh.helper.wechat.library.interfaces.WeChatMessageListener;
 import com.dyhdyh.helper.wechat.library.interfaces.WeChatMessageTransform;
 import com.dyhdyh.helper.wechat.library.model.WeChatContent;
 import com.dyhdyh.helper.wechat.library.model.WeChatMessage;
 import com.dyhdyh.helper.wechat.library.model.WeChatWithdraw;
+import com.dyhdyh.helper.wechat.library.model.fixed.WeChatWindowState;
 
 /**
- * 消息 控制
+ * 监听器控制
  *
  * @author dengyuhan
  * @created 2017/11/7 17:46
  */
-public class WeChatMessageController {
+public class WeChatListenerController {
+
 
     /**
-     * 通知消息监听
+     * 通知聊天窗口的监听器
+     *
+     * @param title
+     * @param state
+     */
+    public static void notifyDialogueWindowLifecycle(String title, WeChatWindowState state) {
+        WeChatDialogueWindowLifecycle lifecycle = WeChatHelper.getInstance().getDialogueWindowLifecycle();
+        if (lifecycle != null) {
+            lifecycle.onDialogueWindowStateChanged(title, state);
+        }
+    }
+
+    /**
+     * 通知 消息监听
      *
      * @param title
      * @param text
      */
-    public static void notifyListener(String title, String text) {
+    public static void notifyMessageListener(String title, String text) {
         WeChatHelper helper = WeChatHelper.getInstance();
         WeChatMessageListener listener = helper.getMessageListener();
         if (listener != null) {

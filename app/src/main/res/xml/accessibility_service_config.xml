@@ -1,10 +1,10 @@
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
-    android:description="@string/accessibility_service_description"
-    android:packageNames="com.tencent.mm"
     android:accessibilityEventTypes="typeAllMask"
-    android:accessibilityFlags="flagDefault"
-    android:accessibilityFeedbackType="feedbackSpoken"
-    android:notificationTimeout="100"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault|flagReportViewIds|flagRequestFilterKeyEvents"
+    android:canRequestFilterKeyEvents="true"
     android:canRetrieveWindowContent="true"
-    android:settingsActivity="com.dyhdyh.helper.wechat.activity.SettingsActivity"
-    />
+    android:description="@string/accessibility_service_description"
+    android:notificationTimeout="100"
+    android:packageNames="com.tencent.mm,com.android.systemui"
+    android:settingsActivity="com.dyhdyh.helper.wechat.activity.SettingsActivity" />

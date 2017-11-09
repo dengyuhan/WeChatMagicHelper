@@ -1,5 +1,6 @@
 package com.dyhdyh.helper.wechat.library;
 
+import com.dyhdyh.helper.wechat.library.interfaces.WeChatDialogueWindowLifecycle;
 import com.dyhdyh.helper.wechat.library.interfaces.WeChatMessageListener;
 import com.dyhdyh.helper.wechat.library.interfaces.WeChatMessageTransform;
 
@@ -11,6 +12,7 @@ public class WeChatHelper {
     private static WeChatHelper mInstance;
     private WeChatMessageListener mMessageListener;
     private WeChatMessageTransform mMessageTransform;
+    private WeChatDialogueWindowLifecycle mDialogueWindowLifecycle;
 
     private WeChatHelper() {
 
@@ -34,6 +36,14 @@ public class WeChatHelper {
     public WeChatHelper setMessageTransform(WeChatMessageTransform messageTransform) {
         this.mMessageTransform = messageTransform;
         return this;
+    }
+
+    public void setDialogueWindowLifecycle(WeChatDialogueWindowLifecycle dialogueWindowLifecycle) {
+        this.mDialogueWindowLifecycle = dialogueWindowLifecycle;
+    }
+
+    public WeChatDialogueWindowLifecycle getDialogueWindowLifecycle() {
+        return mDialogueWindowLifecycle;
     }
 
     public WeChatMessageListener getMessageListener() {
